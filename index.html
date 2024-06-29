@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Fetcher</title>
+    <style>
+        .results {
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="results" id="results"></div>
+    <button onclick="showResult()">Show University Result</button>
+    
+    <script>
+        function showResult() {
+            const url = `https://res-proxy.onrender.com/results?stnum=12367&rlevel=4`;
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('results').innerHTML = data;
+                })
+                .catch(error => {
+                    document.getElementById('results').innerHTML = `<p style="color:red;">Error fetching results: ${error}</p>`;
+                });
+        }
+    </script>
+</body>
+</html>
